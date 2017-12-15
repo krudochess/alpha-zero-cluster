@@ -3,8 +3,10 @@ version: '2'
 services:
 
   self:
-    build:
-      context: ./docker/app/
-      dockerfile: Dockerfile-app
-    volumes:
-    - "./src/:/var"
+    build: ./docker/app/
+    image: app
+    command: python src/chess_zero/run.py self
+
+  gui:
+    image: app
+    command: python src/chess_zero/run.py play_gui
