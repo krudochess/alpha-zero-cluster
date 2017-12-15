@@ -61,6 +61,7 @@ typings/
 .env
 
 # Alpha Zero
+.idea/
 /data/*
 !data/.gitkeep
 
