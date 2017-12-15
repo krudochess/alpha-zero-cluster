@@ -2,11 +2,19 @@ version: '2'
 
 services:
 
-  self:
+  app:
     build: ./docker/app/
-    image: app
+    volumes:
+    - ./app/src:/app/src
+    - ./data:/app/data
+    - ./logs:/app/logs
+
+  self:
+    extends:
+      service: app
     command: python src/chess_zero/run.py self
 
   gui:
-    image: app
+    extends:
+      service: app
     command: python src/chess_zero/run.py play_gui
