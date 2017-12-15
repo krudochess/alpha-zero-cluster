@@ -2,14 +2,10 @@
 FROM python:3.6.3-jessie
 MAINTAINER Francesco Bianco
 
-RUN mkdir /app
-
 RUN cd /app && git clone https://github.com/Zeta36/chess-alpha-zero
 
-WORKDIR /app/chess-alpha-zero
+WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-#RUN echo "KERAS_BACKEND=tensorflow" > .env
-
-CMD ["ls"]
+CMD ["python", "src/chess_zero/run.py", "self"]

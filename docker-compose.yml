@@ -2,10 +2,9 @@ version: '2'
 
 services:
 
-  app:
+  self:
     build:
       context: ./docker/app/
       dockerfile: Dockerfile-app
     volumes:
-    - ./app/:/app/chess-alpha-zero/:rw
-    - .env:/app/chess-alpha-zero/.env:rw
+    - "./src/:/var"
