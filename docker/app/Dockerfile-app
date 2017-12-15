@@ -1,0 +1,13 @@
+
+FROM python:3.6.3-jessie
+MAINTAINER Francesco Bianco
+
+RUN mkdir /app
+
+RUN git clone https://github.com/Zeta36/chess-alpha-zero
+
+WORKDIR /app/chess-alpha-zero
+
+RUN pip install -r requirements.txt
+
+CMD ["ls"]
