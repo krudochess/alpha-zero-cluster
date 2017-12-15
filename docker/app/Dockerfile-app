@@ -4,10 +4,12 @@ MAINTAINER Francesco Bianco
 
 RUN mkdir /app
 
-RUN git clone https://github.com/Zeta36/chess-alpha-zero
+RUN cd /app && git clone https://github.com/Zeta36/chess-alpha-zero
 
 WORKDIR /app/chess-alpha-zero
 
 RUN pip install -r requirements.txt
+
+#RUN echo "KERAS_BACKEND=tensorflow" > .env
 
 CMD ["ls"]
