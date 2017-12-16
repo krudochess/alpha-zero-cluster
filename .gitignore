@@ -64,4 +64,5 @@ typings/
 .idea/
 /data/*
 !data/.gitkeep
+.testboard/
 

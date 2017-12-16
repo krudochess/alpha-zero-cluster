@@ -23,3 +23,8 @@ services:
     extends:
       service: app
     command: python src/chess_zero/run.py play_gui
+
+  uci:
+    extends:
+      service: app
+    command: python src/chess_zero/run.py uci
