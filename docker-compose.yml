@@ -9,6 +9,11 @@ services:
     - ./data:/app/data
     - ./logs:/app/logs
 
+  sl:
+    extends:
+      service: app
+    command: python src/chess_zero/run.py sl
+
   self:
     extends:
       service: app
