@@ -19,6 +19,16 @@ services:
       service: app
     command: python src/chess_zero/run.py self
 
+  opt:
+    extends:
+      service: app
+    command: python src/chess_zero/run.py opt
+
+  eval:
+    extends:
+      service: app
+    command: python src/chess_zero/run.py eval
+
   gui:
     extends:
       service: app
@@ -28,3 +38,21 @@ services:
     extends:
       service: app
     command: python src/chess_zero/run.py uci
+
+  web:
+    image: node:8.9.3
+    user: "node"
+    working_dir: /home/node/web
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb/web
+    volumes:
+      - ./web:/home/node/web
+    ports:
+      - 50080:3000
+    command: "npm start"
+    links:
+      - mongodb
+
+  mongodb:
+    image: mongo:3.6.0-jessie
