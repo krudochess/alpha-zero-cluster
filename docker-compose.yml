@@ -40,9 +40,7 @@ services:
     command: python src/chess_zero/run.py uci
 
   web:
-    image: node:8.9.3
-    user: "node"
-    working_dir: /home/node/web
+    build: ./docker/web/
     environment:
       - NODE_ENV=production
       - MONGO_URI=mongodb://mongodb/web
@@ -50,7 +48,6 @@ services:
       - ./web:/home/node/web
     ports:
       - 50080:3000
-    command: "npm start"
     links:
       - mongodb
 
